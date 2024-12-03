@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfegh2oomh0j3"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_cdipk"]
+[ext_resource type="PackedScene" uid="uid://c7sdpku25bvyb" path="res://scenes/player.tscn" id="2_208qf"]
+[ext_resource type="PackedScene" uid="uid://dyrr8vw7065pj" path="res://scenes/diver_enemy.tscn" id="4_55p4m"]
+[ext_resource type="PackedScene" uid="uid://euyuechhvlsi" path="res://scenes/enemy.tscn" id="4_g3jfu"]
+[ext_resource type="AudioStream" uid="uid://dtpgqasyihtgi" path="res://assets/audios/laser.ogg" id="4_j471m"]
+[ext_resource type="PackedScene" uid="uid://bjhe53ojjhjpa" path="res://scenes/hud.tscn" id="4_u3bur"]
+[ext_resource type="AudioStream" uid="uid://ckip2cer7vyhl" path="res://assets/audios/hit.ogg" id="5_arr8h"]
+[ext_resource type="PackedScene" uid="uid://cl3xfo5bvkmij" path="res://scenes/game_over_screen.tscn" id="5_qgwhj"]
+[ext_resource type="AudioStream" uid="uid://dbfhdjppmorn3" path="res://assets/audios/explode.ogg" id="5_tjwbx"]
+[ext_resource type="Texture2D" uid="uid://c6yh06gtj2111" path="res://assets/textures/purple.png" id="6_0hsk5"]
+[ext_resource type="Texture2D" uid="uid://bt607rl5xnwo2" path="res://assets/textures/speed.png" id="7_d8np1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itu0q"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(270, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_cdipk")
+enemy_scenes = Array[PackedScene]([ExtResource("4_g3jfu"), ExtResource("4_55p4m")])
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_j471m")
+volume_db = -3.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_arr8h")
+volume_db = -2.0
+
+[node name="ExplodeSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_tjwbx")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UILayer" instance=ExtResource("4_u3bur")]
+
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_qgwhj")]
+visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 960)
+
+[node name="PurpleStars" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("6_0hsk5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 540, 960)
+
+[node name="StarParticleEffect" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(270, -50)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_itu0q")
+texture = ExtResource("7_d8np1")
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("2_208qf")]
+position = Vector2(398, 505)
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(270, 850)
+
+[node name="LaserContainer" type="Node2D" parent="."]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="killed" from="Player" to="." method="_on_player_killed"]
+[connection signal="laser_shoot" from="Player" to="." method="_on_player_laser_shoot"]

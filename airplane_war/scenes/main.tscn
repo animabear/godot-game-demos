@@ -61,7 +61,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 540, 960)
 
 [node name="StarParticleEffect" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(270, -50)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_itu0q")

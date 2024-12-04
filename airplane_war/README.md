@@ -5,6 +5,7 @@
 * use WASD to control the direction
 * use Space to shot
 * use R to restart game
+* use Esc to quit game
 
 ## Screenshots
 

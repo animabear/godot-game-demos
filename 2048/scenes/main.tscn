@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg6pesgnwjqf"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_6sihj"]
+[ext_resource type="Script" path="res://scripts/grid.gd" id="1_7fk5f"]
+[ext_resource type="Script" path="res://scripts/input.gd" id="3_y0kh0"]
+[ext_resource type="AudioStream" uid="uid://dldbbju6exrgg" path="res://assets/audios/swipe_0.mp3" id="4_wmrtq"]
+[ext_resource type="AudioStream" uid="uid://dy8n4stcpopk1" path="res://assets/audios/pop_0.mp3" id="5_or7vu"]
+[ext_resource type="AudioStream" uid="uid://r8kd646edihl" path="res://assets/audios/pop_1.mp3" id="6_2073d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_6sihj")
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("1_7fk5f")
+cell_dim = 96
+
+[node name="Input" type="Node2D" parent="."]
+script = ExtResource("3_y0kh0")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="SwipeSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_wmrtq")
+
+[node name="SpawnSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_or7vu")
+
+[node name="MergeSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_2073d")
+
+[connection signal="swipe" from="Input" to="Grid" method="_on_input_swipe"]

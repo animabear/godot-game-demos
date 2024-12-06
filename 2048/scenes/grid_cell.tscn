@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj38v8yg1ookp"]
+
+[ext_resource type="Texture2D" uid="uid://becy3tgmaefbe" path="res://assets/textures/cell_background.png" id="1_7q8ou"]
+
+[node name="GridCell" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_7q8ou")

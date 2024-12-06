@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8w2ht8mcdk25"]
+
+[ext_resource type="Texture2D" uid="uid://4slxpedugf1a" path="res://assets/textures/tile_background.png" id="1_et40m"]
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_pxhvr"]
+
+[node name="Tile" type="Node2D" groups=["tile"]]
+script = ExtResource("1_pxhvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.937255, 0.894118, 0.854902, 1)
+self_modulate = Color(0.937255, 0.894118, 0.854902, 1)
+z_index = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_et40m")
+
+[node name="Control" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Sprite2D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.466667, 0.431373, 0.396078, 1)
+theme_override_font_sizes/font_size = 36
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

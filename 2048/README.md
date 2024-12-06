@@ -9,3 +9,10 @@
 ## Screenshots
 
 ![](screenshots/01.png)
+
+## Todo
+
+* UI for score display
+* UI for game result
+* UI for restart
+

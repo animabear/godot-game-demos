@@ -8,7 +8,7 @@
 
 ## Screenshots
 
-![](screenshots/01.png)
+![](screenshots/screenshot.png)
 
 ## Todo
 

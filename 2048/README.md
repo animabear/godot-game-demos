@@ -15,4 +15,3 @@
 * UI for score display
 * UI for game result
 * UI for restart
-

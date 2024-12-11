@@ -11,6 +11,6 @@ func _ready():
 		coin.collected.connect(_on_coin_collected)
 
 func _on_coin_collected():
+	pickup_sound.play()
 	score += 1
 	score_label.text = "You collected %s coins." % score
-	pickup_sound.play()

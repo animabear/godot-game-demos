@@ -7,4 +7,4 @@ A collection of game demos for Godot 4.3+
 * [2048](2048/)
 * [Platform Game 2D](platformer_2d/)
 * [Tetris](tetris/)
-* [Flayyp Bird](flappy_bird/)
+* [Flappy Bird](flappy_bird/)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://8qfssqpmkmp2"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_2cdgh"]
+[ext_resource type="PackedScene" uid="uid://dmlxkmpeo7itr" path="res://scenes/bird.tscn" id="1_7akh6"]
+[ext_resource type="Texture2D" uid="uid://dbdv70oayg54n" path="res://assets/background-day.png" id="1_61jmp"]
+[ext_resource type="PackedScene" uid="uid://d2aknmvk4yfe2" path="res://scenes/ground.tscn" id="3_enf6f"]
+[ext_resource type="PackedScene" uid="uid://63cl708d6ibf" path="res://scenes/pipe_spawner.tscn" id="4_60a3t"]
+[ext_resource type="PackedScene" uid="uid://1igrhk1nnl7a" path="res://scenes/fade.tscn" id="6_gxgu1"]
+[ext_resource type="PackedScene" uid="uid://bsd8v6lwkvyvh" path="res://scenes/ui.tscn" id="7_jlsbu"]
+
+[node name="Main" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_2cdgh")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_61jmp")
+region_rect = Rect2(0, 0, 288, 512)
+
+[node name="BirdSpawnPos" type="Marker2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.52, -0.280001)
+zoom = Vector2(1.9, 1.9)
+
+[node name="Ground" parent="." instance=ExtResource("3_enf6f")]
+position = Vector2(24, 200)
+
+[node name="PipeSpawner" parent="." instance=ExtResource("4_60a3t")]
+
+[node name="Bird" parent="." instance=ExtResource("1_7akh6")]
+
+[node name="Fade" parent="." instance=ExtResource("6_gxgu1")]
+
+[node name="UI" parent="." instance=ExtResource("7_jlsbu")]
+
+[connection signal="bird_crashed" from="Ground" to="GameManager" method="on_game_ended"]
+[connection signal="bird_crashed" from="PipeSpawner" to="GameManager" method="on_game_ended"]
+[connection signal="point_scored" from="PipeSpawner" to="GameManager" method="on_point_scored"]
+[connection signal="game_started" from="Bird" to="GameManager" method="on_game_started"]

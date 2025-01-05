@@ -1,9 +1,10 @@
-# godot-game-demos
+# Godot Game Demos
 A collection of game demos for Godot 4.3+
 
-## demo list
+## Demo List
 
-* [airplane_war](airplane_war/)
+* [Airplane War](airplane_war/)
 * [2048](2048/)
-* [platformer_2d](platformer_2d/)
-* [tetris](tetris/)
+* [Platform Game 2D](platformer_2d/)
+* [Tetris](tetris/)
+* [Flayyp Bird](flappy_bird/)

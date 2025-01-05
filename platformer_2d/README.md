@@ -1,4 +1,4 @@
-# platform game 2d demo
+# Platform Game 2D Demo
 
 Based on [How to make a Video Game - Godot Beginner Tutorial](https://www.youtube.com/watch?v=LOhfqjmasi0&ab_channel=Brackeys), expanded some features.
 

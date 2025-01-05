@@ -1,4 +1,4 @@
-# tetris demo
+# Tetris Demo
 
 Based on [Beginner Godot Tutorial - How to Make Tetris](https://www.youtube.com/watch?v=2T2Fkzwf6FM&ab_channel=CodingWithRuss), and fix some bugs.
 

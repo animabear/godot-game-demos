@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgug1agdp70b7"]
+
+[ext_resource type="Texture2D" uid="uid://c7a8g1bkis4kf" path="res://assets/inventory_texture.png" id="1_wpqnc"]
+[ext_resource type="Script" path="res://scripts/slot.gd" id="2_rbwu0"]
+
+[node name="Slot" type="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+texture = ExtResource("1_wpqnc")
+expand_mode = 1
+script = ExtResource("2_rbwu0")
+
+[node name="StatusFilter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

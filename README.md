@@ -1,5 +1,9 @@
+
+
 # Godot Game Demos
 A collection of game demos for Godot 4.3+
+
+Each demo is a standalone project. Open the corresponding folder directly in Godot to play.
 
 ## Demo List
 
